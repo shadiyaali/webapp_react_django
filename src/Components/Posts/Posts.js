@@ -1,63 +1,35 @@
-import React from 'react';
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import './Post.css'
 
-import Heart from '../../assets/Heart';
-import './Post.css';
+function HomeComponent() {
+    const [notes, setNote] = useState([])
 
-function Posts() {
-
+    useEffect(()=>{
+        async function getNotes() {
+            const response = await axios.get('http://localhost:8000/api/notes/')
+            setNote(response.data)
+        }
+        getNotes();
+    }, [])
   return (
-    <div className="postParentDiv">
-      <div className="moreView">
-        <div className="heading">
-          <span>Quick Menu</span>
-          <span>View more</span>
+    <div className='home-div'>
+        <div className='container-note'>
+            <h1>Notes</h1>
+            <div className='note-contain' style={{display:"flex", flexWrap:"wrap"}}>
+                {notes.map((note) => (
+                    <div className="single-note">
+                        <p className='title'>{note.title}</p>
+                        <p>{note.description}</p>
+                        
+                        <p className='rating-no'>Rating: {note.rating}</p>
+                    </div>
+                ))}
+            </div>
+            
         </div>
-        <div className="cards">
-          <div
-            className="card"
-          >
-            <div className="favorite">
-              <Heart></Heart>
-            </div>
-            <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
-            </div>
-            <div className="content">
-              <p className="rate">&#x20B9; 250000</p>
-              <span className="kilometer">Two Wheeler</span>
-              <p className="name"> YAMAHA R15V3</p>
-            </div>
-            <div className="date">
-              <span>Tue May 04 2021</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="recommendations">
-        <div className="heading">
-          <span>Fresh recommendations</span>
-        </div>
-        <div className="cards">
-          <div className="card">
-            <div className="favorite">
-              <Heart></Heart>
-            </div>
-            <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
-            </div>
-            <div className="content">
-              <p className="rate">&#x20B9; 250000</p>
-              <span className="kilometer">Two Wheeler</span>
-              <p className="name"> YAMAHA R15V3</p>
-            </div>
-            <div className="date">
-              <span>10/5/2021</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  );
+  )
 }
 
-export default Posts;
+export default HomeComponent

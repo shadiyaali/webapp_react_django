@@ -37,7 +37,7 @@ function AdminLogin() {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
-        if (res.data.status==='Wrong Password'|| res.data.status==='Email is not found'){
+        if (res.data.status=='Wrong Password'|| res.data.status=='Email is not found' || res.data.status=='Not a superuser'){
           Swal.fire({
             position: "center",
             icon: "error",
@@ -57,7 +57,7 @@ function AdminLogin() {
           if (res.status===200){
             
         
-            dispatch(change(res.data.payload.username));
+            // dispatch(change(res.data.payload.username));
             navigate("/users");
           }
         }

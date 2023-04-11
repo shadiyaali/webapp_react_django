@@ -10,9 +10,9 @@ function Home(props) {
   return (
     <div className="homeParentDiv">
       <Header />
-      <Banner />
+      {/* <Banner /> */}
       <Posts />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

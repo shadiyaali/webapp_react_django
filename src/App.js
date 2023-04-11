@@ -8,6 +8,7 @@ import AdminPage from './Pages/AdminPage'
 import UserList from './Components/AdminComponents/UserList';
 import AdminaddUser from './Components/AdminComponents/AdminaddUser';
 import UpdateUser from './Components/AdminComponents/UpdateUser';
+import UserProfile from './Pages/UserProfile';
 function App() {
   return (
     <div>
@@ -20,6 +21,7 @@ function App() {
           <Route path='/users' element={<UserList/>} />
           <Route path='/adminAddUser' element={<AdminaddUser/>}/>
           <Route path='/updateUser/:id' element={<UpdateUser/>} />
+          <Route path='userProfile/'element={<UserProfile/>} />
           </Routes>
       </Router>
     </div>

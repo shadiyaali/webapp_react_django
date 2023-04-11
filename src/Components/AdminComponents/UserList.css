@@ -14,3 +14,22 @@
   background-color: #051d33;
   color: rgb(255, 255, 255);
 }
+
+/* CSS for the search input */
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+
+  
+}
+input[type="text"] {
+  /* existing styles */
+  position: relative;
+  top: -30px;
+}
